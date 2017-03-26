@@ -202,11 +202,13 @@ input[type=button] {
 
 .bar {
   font: 10px sans-serif;
-  background-color: steelblue;
-  text-align: right;
+  background-color: #666;
+  text-align: left;
   padding: 3px;
   margin: 1px;
   color: white; }
+  .bar.new {
+    background-color: steelblue; }
 
 .chart {
   width: 500px; }

@@ -21,7 +21,7 @@ var data = [{
 }];
 
 function initialize() {
-    d3.select(".chart").selectAll("div").data(data).enter().append("div").classed("bar", true).style("width", function (d) {
+    d3.select(".chart").selectAll("div").data(data).enter().append("div").classed("bar", true).classed("new", true).style("width", function (d) {
         return x(d.value) + "%";
     }).text(function (d) {
         return d.name + ": " + d.value.toFixed(1);
@@ -37,7 +37,7 @@ function update() {
     //    d3.select(".chart").selectAll("div").data(data).enter().append("div")
     d3.select(".chart").selectAll("div").data(data)
     //        .attr("class", "bar")
-    .style("width", function (d) {
+    .classed("new", false).style("width", function (d) {
         return x(d.value) + "%";
     }).text(function (d) {
         return d.name + ": " + d.value.toFixed(1);

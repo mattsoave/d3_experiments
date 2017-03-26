@@ -31,6 +31,7 @@ function initialize() {
         .data(data)
         .enter().append("div")
         .classed("bar", true)
+        .classed("new", true)
         .style("width", function (d) {
             return x(d.value) + "%";
         })
@@ -48,6 +49,7 @@ function update() {
 //    d3.select(".chart").selectAll("div").data(data).enter().append("div")
     d3.select(".chart").selectAll("div").data(data)
 //        .attr("class", "bar")
+        .classed("new", false)
         .style("width", function (d) {
             return x(d.value) + "%";
         })
