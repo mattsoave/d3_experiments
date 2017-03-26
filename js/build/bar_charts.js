@@ -20,14 +20,6 @@ var data = [{
     "value": 10 + Math.random() * 20
 }];
 
-function initialize() {
-    d3.select(".chart").selectAll("div").data(data).enter().append("div").classed("bar", true).classed("new", true).style("width", function (d) {
-        return x(d.value) + "%";
-    }).text(function (d) {
-        return d.name + ": " + d.value.toFixed(1);
-    });
-}
-
 function update() {
     //    
     //    for (let datum of data) {
@@ -35,9 +27,9 @@ function update() {
     //    }
 
     //    d3.select(".chart").selectAll("div").data(data).enter().append("div")
-    d3.select(".chart").selectAll("div").data(data)
-    //        .attr("class", "bar")
-    .classed("new", false).style("width", function (d) {
+    d3.select(".chart").selectAll("div").data(data).classed("new", false).style("width", function (d) {
+        return x(d.value) + "%";
+    }).enter().append("div").classed("bar", true).classed("new", true).style("width", function (d) {
         return x(d.value) + "%";
     }).text(function (d) {
         return d.name + ": " + d.value.toFixed(1);
@@ -58,5 +50,5 @@ var x = d3.scaleLinear().domain([0, d3.max(data, function (d) {
 })]).range([0, 100]);
 
 document.addEventListener("DOMContentLoaded", function (event) {
-    initialize();
+    update();
 });
