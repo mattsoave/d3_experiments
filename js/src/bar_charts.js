@@ -38,11 +38,14 @@ function update() {
         .selectAll("div")
         .data(data);
     
-    selection.classed("new", false)
+    // Update existing
+    selection
+        .classed("new", false)
         .style("width", function (d) {
             return x(d.value) + "%";
         });
     
+    // Add new
     selection.enter()
         .append("div")
         .classed("bar", true)
@@ -54,6 +57,7 @@ function update() {
             return d.name + ": " + d.value.toFixed(1);
         });
     
+    // Remove old
     selection.exit()
         .remove();
 }
@@ -63,6 +67,13 @@ function addData() {
         "name": "New",
         "value": 10 + Math.random()*20
     });
+    
+    update();
+}
+function updateData() {
+    for (let datum of data) {
+        datum.value  += Math.random();
+    }
     
     update();
 }

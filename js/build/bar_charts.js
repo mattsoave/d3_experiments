@@ -30,16 +30,19 @@ function update() {
 
     var selection = d3.select(".chart").selectAll("div").data(data);
 
+    // Update existing
     selection.classed("new", false).style("width", function (d) {
         return x(d.value) + "%";
     });
 
+    // Add new
     selection.enter().append("div").classed("bar", true).classed("new", true).style("width", function (d) {
         return x(d.value) + "%";
     }).text(function (d) {
         return d.name + ": " + d.value.toFixed(1);
     });
 
+    // Remove old
     selection.exit().remove();
 }
 
@@ -48,6 +51,34 @@ function addData() {
         "name": "New",
         "value": 10 + Math.random() * 20
     });
+
+    update();
+}
+function updateData() {
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+        for (var _iterator = data[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var datum = _step.value;
+
+            datum.value += Math.random();
+        }
+    } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+    } finally {
+        try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+                _iterator.return();
+            }
+        } finally {
+            if (_didIteratorError) {
+                throw _iteratorError;
+            }
+        }
+    }
 
     update();
 }
