@@ -33,14 +33,18 @@ function update() {
 //    }
     
 //    d3.select(".chart").selectAll("div").data(data).enter().append("div")
-    d3.select(".chart")
+    
+    var selection = d3.select(".chart")
         .selectAll("div")
-        .data(data)
-        .classed("new", false)
+        .data(data);
+    
+    selection.classed("new", false)
         .style("width", function (d) {
             return x(d.value) + "%";
-        })
-        .enter().append("div")
+        });
+    
+    selection.enter()
+        .append("div")
         .classed("bar", true)
         .classed("new", true)
         .style("width", function (d) {
