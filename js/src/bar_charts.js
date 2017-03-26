@@ -40,14 +40,14 @@ function initialize() {
 }
 
 function update() {
-    
-    for (let datum of data) {
-        datum.value += Math.random()*5 - 1
-    }
+//    
+//    for (let datum of data) {
+//        datum.value += Math.random()*5 - 1
+//    }
     
 //    d3.select(".chart").selectAll("div").data(data).enter().append("div")
     d3.select(".chart").selectAll("div").data(data)
-        .attr("class", "bar")
+//        .attr("class", "bar")
         .style("width", function (d) {
             return x(d.value) + "%";
         })
@@ -61,6 +61,8 @@ function addData() {
         "name": "New",
         "value": 10 + Math.random()*20
     });
+    
+    update();
 }
 
 var x = d3.scaleLinear()
