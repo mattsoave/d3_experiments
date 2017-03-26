@@ -38,6 +38,31 @@ function initialize() {
             return d.name + ": " + d.value.toFixed(1);
         });
 }
+
+function update() {
+    
+    for (let datum of data) {
+        datum.value += Math.random()*5 - 1
+    }
+    
+//    d3.select(".chart").selectAll("div").data(data).enter().append("div")
+    d3.select(".chart").selectAll("div").data(data)
+        .attr("class", "bar")
+        .style("width", function (d) {
+            return x(d.value) + "%";
+        })
+        .text(function (d) {
+            return d.name + ": " + d.value.toFixed(1);
+        });
+}
+
+function addData() {
+    data.push({
+        "name": "New",
+        "value": 10 + Math.random()*20
+    });
+}
+
 var x = d3.scaleLinear()
                 .domain([0, d3.max(data, function(d) { return d.value; })])
                 .range([0, 100]);
