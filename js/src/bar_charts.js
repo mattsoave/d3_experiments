@@ -30,7 +30,7 @@ function initialize() {
         .selectAll("div")
         .data(data)
         .enter().append("div")
-        .attr("class", "bar")
+        .classed("bar", true)
         .style("width", function (d) {
             return x(d.value) + "%";
         })

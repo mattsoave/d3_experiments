@@ -21,7 +21,7 @@ var data = [{
 }];
 
 function initialize() {
-    d3.select(".chart").selectAll("div").data(data).enter().append("div").attr("class", "bar").style("width", function (d) {
+    d3.select(".chart").selectAll("div").data(data).enter().append("div").classed("bar", true).style("width", function (d) {
         return x(d.value) + "%";
     }).text(function (d) {
         return d.name + ": " + d.value.toFixed(1);
