@@ -53,6 +53,9 @@ function update() {
         .text(function (d) {
             return d.name + ": " + d.value.toFixed(1);
         });
+    
+    selection.exit()
+        .remove();
 }
 
 function addData() {

@@ -27,13 +27,20 @@ function update() {
     //    }
 
     //    d3.select(".chart").selectAll("div").data(data).enter().append("div")
-    d3.select(".chart").selectAll("div").data(data).classed("new", false).style("width", function (d) {
+
+    var selection = d3.select(".chart").selectAll("div").data(data);
+
+    selection.classed("new", false).style("width", function (d) {
         return x(d.value) + "%";
-    }).enter().append("div").classed("bar", true).classed("new", true).style("width", function (d) {
+    });
+
+    selection.enter().append("div").classed("bar", true).classed("new", true).style("width", function (d) {
         return x(d.value) + "%";
     }).text(function (d) {
         return d.name + ": " + d.value.toFixed(1);
     });
+
+    selection.exit().remove();
 }
 
 function addData() {
