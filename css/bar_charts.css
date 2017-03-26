@@ -207,3 +207,6 @@ input[type=button] {
   padding: 3px;
   margin: 1px;
   color: white; }
+
+.chart {
+  width: 500px; }
