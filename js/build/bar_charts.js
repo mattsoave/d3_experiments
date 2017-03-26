@@ -21,7 +21,35 @@ var data = [{
 }];
 
 function initialize() {
-    d3.interval(update, 1000);
+    d3.interval(function () {
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+
+            for (var _iterator = data[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                var datum = _step.value;
+
+                datum.value = datum.value * .98;
+            }
+        } catch (err) {
+            _didIteratorError = true;
+            _iteratorError = err;
+        } finally {
+            try {
+                if (!_iteratorNormalCompletion && _iterator.return) {
+                    _iterator.return();
+                }
+            } finally {
+                if (_didIteratorError) {
+                    throw _iteratorError;
+                }
+            }
+        }
+
+        update();
+    }, 1000);
 }
 
 function update() {
@@ -64,27 +92,27 @@ function addData() {
     });
 }
 function updateData() {
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
+    var _iteratorNormalCompletion2 = true;
+    var _didIteratorError2 = false;
+    var _iteratorError2 = undefined;
 
     try {
-        for (var _iterator = data[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var datum = _step.value;
+        for (var _iterator2 = data[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            var datum = _step2.value;
 
             datum.value += Math.random();
         }
     } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
     } finally {
         try {
-            if (!_iteratorNormalCompletion && _iterator.return) {
-                _iterator.return();
+            if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                _iterator2.return();
             }
         } finally {
-            if (_didIteratorError) {
-                throw _iteratorError;
+            if (_didIteratorError2) {
+                throw _iteratorError2;
             }
         }
     }

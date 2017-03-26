@@ -26,7 +26,13 @@ var data = [
 ];
 
 function initialize() {
-    d3.interval(update, 1000);
+    d3.interval(function() {
+        
+        for (let datum of data) {
+            datum.value = datum.value*.98;
+        }
+        update();
+    }, 1000);
 }
 
 
