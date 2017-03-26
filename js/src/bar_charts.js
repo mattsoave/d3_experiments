@@ -25,6 +25,10 @@ var data = [
     }
 ];
 
+function initialize() {
+    d3.interval(update, 1000);
+}
+
 
 function update() {
 //    
@@ -71,15 +75,11 @@ function addData() {
         "name": "New",
         "value": 10 + Math.random()*20
     });
-    
-    update();
 }
 function updateData() {
     for (let datum of data) {
         datum.value  += Math.random();
     }
-    
-    update();
 }
 
 var x = d3.scaleLinear()
@@ -88,5 +88,5 @@ var x = d3.scaleLinear()
 
 
 document.addEventListener("DOMContentLoaded", function (event) {
-   update();
+   initialize();
 });

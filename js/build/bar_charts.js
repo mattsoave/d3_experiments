@@ -20,6 +20,10 @@ var data = [{
     "value": 10 + Math.random() * 20
 }];
 
+function initialize() {
+    d3.interval(update, 1000);
+}
+
 function update() {
     //    
     //    for (let datum of data) {
@@ -58,8 +62,6 @@ function addData() {
         "name": "New",
         "value": 10 + Math.random() * 20
     });
-
-    update();
 }
 function updateData() {
     var _iteratorNormalCompletion = true;
@@ -86,8 +88,6 @@ function updateData() {
             }
         }
     }
-
-    update();
 }
 
 var x = d3.scaleLinear().domain([0, d3.max(data, function (d) {
@@ -95,5 +95,5 @@ var x = d3.scaleLinear().domain([0, d3.max(data, function (d) {
 })]).range([0, 100]);
 
 document.addEventListener("DOMContentLoaded", function (event) {
-    update();
+    initialize();
 });
