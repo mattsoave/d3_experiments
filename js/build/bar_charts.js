@@ -31,7 +31,7 @@ function initialize() {
             for (var _iterator = data[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                 var datum = _step.value;
 
-                datum.value = datum.value * .98;
+                datum.value = datum.value * .995;
             }
         } catch (err) {
             _didIteratorError = true;
@@ -49,7 +49,7 @@ function initialize() {
         }
 
         update();
-    }, 1000);
+    }, 200);
 }
 
 function update() {
@@ -74,10 +74,10 @@ function update() {
         data.splice(i, 1);
         update();
     }).merge(selection) // ENTER and UPDATE
-    .style("width", function (d) {
-        return x(d.value) + "%";
-    }).text(function (d) {
+    .text(function (d) {
         return d.name + ": " + d.value.toFixed(1);
+    }).style("width", function (d) {
+        return x(d.value) + "%";
     });
 
     // Remove old 

@@ -29,10 +29,10 @@ function initialize() {
     d3.interval(function() {
         
         for (let datum of data) {
-            datum.value = datum.value*.98;
+            datum.value = datum.value*.995;
         }
         update();
-    }, 1000);
+    }, 200);
 }
 
 
@@ -64,11 +64,11 @@ function update() {
             update();
         })
     .merge(selection) // ENTER and UPDATE
-        .style("width", function (d) {
-            return x(d.value) + "%";
-        })
         .text(function (d) {
             return d.name + ": " + d.value.toFixed(1);
+        })
+        .style("width", function (d) {
+            return x(d.value) + "%";
         });
     
     // Remove old 
