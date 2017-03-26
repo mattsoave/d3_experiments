@@ -36,11 +36,16 @@ function update() {
 
     // Add new
     selection.enter() // ENTER
-    .append("div").classed("bar", true).classed("new", true).text(function (d) {
-        return d.name + ": " + d.value.toFixed(1);
+    .append("div").classed("bar", true).classed("new", true).on("click", function (d, i) {
+        console.log(d);
+        console.log(i);
+        data.splice(i, 1);
+        update();
     }).merge(selection) // ENTER and UPDATE
     .style("width", function (d) {
         return x(d.value) + "%";
+    }).text(function (d) {
+        return d.name + ": " + d.value.toFixed(1);
     });
 
     // Remove old 
