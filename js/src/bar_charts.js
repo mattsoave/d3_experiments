@@ -39,26 +39,24 @@ function update() {
         .data(data);
     
     // Update existing
-    selection
-        .classed("new", false)
-        .style("width", function (d) {
-            return x(d.value) + "%";
-        });
+    selection // UPDATE
+        .classed("new", false);
     
     // Add new
-    selection.enter()
+    selection.enter() // ENTER
         .append("div")
         .classed("bar", true)
         .classed("new", true)
-        .style("width", function (d) {
-            return x(d.value) + "%";
-        })
         .text(function (d) {
             return d.name + ": " + d.value.toFixed(1);
+        })
+    .merge(selection) // ENTER and UPDATE
+        .style("width", function (d) {
+            return x(d.value) + "%";
         });
     
-    // Remove old
-    selection.exit()
+    // Remove old 
+    selection.exit() // EXIT
         .remove();
 }
 

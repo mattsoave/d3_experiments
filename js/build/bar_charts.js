@@ -31,19 +31,21 @@ function update() {
     var selection = d3.select(".chart").selectAll("div").data(data);
 
     // Update existing
-    selection.classed("new", false).style("width", function (d) {
-        return x(d.value) + "%";
-    });
+    selection // UPDATE
+    .classed("new", false);
 
     // Add new
-    selection.enter().append("div").classed("bar", true).classed("new", true).style("width", function (d) {
-        return x(d.value) + "%";
-    }).text(function (d) {
+    selection.enter() // ENTER
+    .append("div").classed("bar", true).classed("new", true).text(function (d) {
         return d.name + ": " + d.value.toFixed(1);
+    }).merge(selection) // ENTER and UPDATE
+    .style("width", function (d) {
+        return x(d.value) + "%";
     });
 
-    // Remove old
-    selection.exit().remove();
+    // Remove old 
+    selection.exit() // EXIT
+    .remove();
 }
 
 function addData() {
